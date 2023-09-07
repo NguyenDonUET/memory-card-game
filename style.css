@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mx-6 {
+    margin: 0 24px;
+}
+.my-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.px-4 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Game style */
+.game-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+}
+.timer {
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 4px 8px;
+    background-color: rgb(190, 187, 187);
+    border-radius: 4px;
+    color: #555;
+}
+.reset-game {
+    padding: 12px 24px;
+    background-color: hsl(240, 63%, 54%);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.reset-game:hover {
+    background-color: hsl(240, 63%, 70%);
+}
+.reset-game:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+.memory-game {
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    justify-content: center;
+    gap: 8px;
+}
+/* @media screen and (min-width: 768px) {
+    .memory-game {
+        grid-template-columns: repeat(2, 300px);
+    }
+}
+@media screen and (min-width: 1024px) {
+    .memory-game {
+        grid-template-columns: repeat(4, 300px);
+    }
+} */
+
+.memory-card {
+    /* width: calc(25% - 10px);
+    height: calc(33.3333% - 10px); */
+    height: 220px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
+}
+
+.memory-card img {
+    border-radius: 8px;
+}
+
+.front-face,
+.back-face {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    backface-visibility: hidden;
+}
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform 0.15s ease-out;
+}
+
+.front-face {
+    transform: rotateY(0.5turn);
+}
+
+/* Dynamic Class */
+.memory-card.flip {
+    transform: rotateY(180deg) perspective(1000px);
+}
+
+footer {
+    background-color: black;
+    color: hsla(0, 0%, 100%, 0.5);
+    padding: 1rem 2rem;
+    margin-top: 64px;
+    text-align: center;
+}
+
+.score-board.hidden {
+    display: none;
+}
+.score-board {
+    font-size: 1.5rem;
+}
+
+.message {
+    background: yellow;
+    padding: 5px;
+    font-size: 1rem;
+    color: rgb(56, 56, 165);
+    display: none;
+}
+
+@media screen and (min-width: 375px) {
+    .message {
+        padding: 8px;
+        font-size: 1.2rem;
+    }
+}
+
+.message.show {
+    display: block;
+}
